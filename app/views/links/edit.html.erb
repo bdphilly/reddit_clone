@@ -1,0 +1,29 @@
+<h1>Edit a Link</h1>
+
+<form action="<%= link_url %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <%= render 'layouts/auth_token' %>
+
+  <label for="name">Link Name:</label>
+    <input type="text" name="link[title]" value="<%= @link.title %>" id="name">
+
+  <br>
+
+  <label for="url">URL:</label>
+    <input type="text" name="link[url]" value="<%= @link.url %>" id="url">
+
+  <br>
+
+  <label for="subname">Sub:</label>
+  <br>
+  <% Sub.all.each do |sub| %>
+    <%= sub.name %>
+
+    <input type="checkbox" name="link[sub_ids][]"
+      value="<%= sub.id %>" id="subname">
+    <br>
+
+  <% end %>
+
+  <input type="submit" name="Edit Link">
+</form>

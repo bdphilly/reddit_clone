@@ -1,0 +1,28 @@
+<h1>Submit a Link</h1>
+
+<form action="<%= links_url %>" method="post">
+  <%= render 'layouts/auth_token' %>
+
+  <label for="name">Link Name:</label>
+    <input type="text" name="link[title]" value="" id="name">
+
+  <br>
+
+  <label for="url">URL:</label>
+    <input type="text" name="link[url]" value="" id="url">
+
+  <br>
+
+  <label for="subname">Sub:</label>
+  <br>
+  <% Sub.all.each do |sub| %>
+    <%= sub.name %>
+
+    <input type="checkbox" name="link[sub_ids][]"
+      value="<%= sub.id %>" id="subname">
+    <br>
+
+  <% end %>
+
+  <input type="submit" name="Create Link">
+</form>

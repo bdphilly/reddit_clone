@@ -6,15 +6,18 @@ describe LinkMembership do
     let(:incomplete_membership) {LinkMembership.new}
 
     it "validates presence of sub" do
-      expect(incomplete_membership).to have(1).error_on(:sub_id)
+      expect(incomplete_membership).to have(1).error_on(:sub)
     end
 
     it "validates presence of link" do
-      expect(incomplete_membership).to have(1).error_on(:link_id)
+      expect(incomplete_membership).to have(1).error_on(:link)
     end
   end
 
   it "validates uniqueness of sub/link pairing" do
+    lm1 = FactoryGirl.create!(:link_membership)
+    lm2 = FactoryGirl.build(:link_membership)
+
     link_membership1 = LinkMembership.create!({ :sub_id => 1, :link_id => 1 })
     link_membership2 = LinkMembership.new({ :sub_id => 1, :link_id => 1 })
 

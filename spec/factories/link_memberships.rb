@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :link_membership do
-    link_id "MyString"
-    sub_id "MyString"
+    link_id 1
+    sub_id 1
   end
 end

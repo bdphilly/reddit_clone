@@ -6,14 +6,16 @@ class LinkMembership < ActiveRecord::Base
     :link,
     class_name: "Link",
     primary_key: :id,
-    foreign_key: :link_id
+    foreign_key: :link_id,
+    inverse_of: :link_memberships
   )
 
   belongs_to(
     :sub,
     class_name: "Sub",
     primary_key: :id,
-    foreign_key: :sub_id
+    foreign_key: :sub_id,
+    inverse_of: :link_memberships
   )
 
 end

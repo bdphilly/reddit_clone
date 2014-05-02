@@ -15,7 +15,7 @@
 
 FactoryGirl.define do
   factory :link do
-    title "MyString"
+    sequence title "MyString"
     url "MyString"
     text "MyString"
     submitter_id 123

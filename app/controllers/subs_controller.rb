@@ -35,7 +35,7 @@ class SubsController < ApplicationController
 
   def update
     @sub = Sub.find(params[:id])
-    # fail
+
     if @sub.update_attributes(sub_params) &&
         @sub.links.each_with_index do |link, i|
           link.update_attributes(link_params[i])
