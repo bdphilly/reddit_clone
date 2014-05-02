@@ -1,0 +1,6 @@
+<%= link_to comment.body, link_comment_url(@comment.link.id, @comment) %>
+<br>
+
+<ul>
+  <%= comments_by_parent[comment.id].each do |child_comment| %>
+    <li><%=  %>
