@@ -44,8 +44,8 @@ describe Link do
   end
 
   describe "Associations" do
-    it {should have_one :submitter}
-    it {should have_many :subs}
-    it {should have_many :link_memberships}
+    it { should belong_to(:submitter) }
+    it { should have_many(:subs) }
+    it { should have_many(:link_memberships) }
   end
 end

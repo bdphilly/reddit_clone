@@ -29,4 +29,8 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_url unless signed_in?
   end
 
+  def ensure_moderator
+    redirect_to subs_url unless current_user.id ==    Sub.find(params[:id]).moderator_id
+  end
+
 end

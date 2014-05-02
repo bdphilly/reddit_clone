@@ -13,6 +13,19 @@ require 'URI'
 #
 
 class Link < ActiveRecord::Base
-  validates :title, :url, :submitter_id, presence: true
+  validates :title, :url, presence: true
   validates :url, :format => URI::regexp(%w(http https))
+
+  has_many :link_memberships,inverse_of: :link
+  has_many :subs, through: :link_memberships, source: :sub
+  belongs_to(
+   :submitter,
+   class_name: 'User',
+   primary_key: :id,
+   foreign_key: :submitter_id
+
+   )
+
+
+
 end
