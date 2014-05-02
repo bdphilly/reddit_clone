@@ -19,12 +19,23 @@ class Link < ActiveRecord::Base
 
   has_many :link_memberships, inverse_of: :link
   has_many :subs, through: :link_memberships, source: :sub
+  has_many :comments, inverse_of: :link
   belongs_to(
    :submitter,
    class_name: 'User',
    primary_key: :id,
-   foreign_key: :submitter_id
+   foreign_key: :submitter_id,
+   inverse_of: :links
    )
+
+   def comments_by_parent_id
+     comments_by_parent = Hash.new { |hash, key| hash[key] = [] }
+     Comment.all.each do |comment|
+       comments_by_parent[comment.parent_comment_id] << comment
+     end
+     comments_by_parent
+   end
+
 
    # def valid_url?
    #   !!URI.parse(self.url)

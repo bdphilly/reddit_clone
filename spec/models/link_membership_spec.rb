@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: link_memberships
+#
+#  id         :integer          not null, primary key
+#  link_id    :integer
+#  sub_id     :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'spec_helper'
 
 describe LinkMembership do
