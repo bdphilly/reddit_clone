@@ -14,7 +14,13 @@ class User < ActiveRecord::Base
   validates :username, :password_digest, presence: true
   validates :password, length: { minimum: 6, :allow_nil => true}
 
-  has_many :links, foreign_key: :submitter_id, class_name: "Link", inverse_of: :submitter
+  has_many :links,
+            foreign_key: :submitter_id,
+            class_name: "Link",
+            inverse_of: :submitter
+
+  has_many :comments, inverse_of: :user
+
 
   attr_reader :password
 

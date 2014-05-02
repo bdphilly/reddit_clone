@@ -1,0 +1,10 @@
+<h1>Comments</h1>
+
+<form action="<%= link_comments_url(params[:link_id]) %>" method="post">
+  <%= render "layouts/auth_token" %>
+  <label for="comment">Comment:</label>
+  <input type="textarea" name="comment[body]" id="comment">
+
+
+  <input type="submit" value="Submit Comment">
+</form>

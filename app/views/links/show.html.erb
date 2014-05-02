@@ -1,3 +1,7 @@
 <h1><%= @link.title %> :</h1><h2><%= @link.url %></h2>
 <br>
 <%= @link.subs.each {|sub| sub.name} %>
+
+<br>
+
+<%= link_to "Comment on this post", new_link_comment_url(@link) %>
