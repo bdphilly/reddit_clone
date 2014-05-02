@@ -11,7 +11,6 @@ class SubsController < ApplicationController
   end
 
   def create
-
     @sub = Sub.new(sub_params)
     @sub.moderator_id = current_user.id
 
@@ -35,8 +34,13 @@ class SubsController < ApplicationController
   end
 
   def update
-    @sub = Sub.update_attributes(sub_params)
-    if @sub
+    @sub = Sub.find(params[:id])
+    # fail
+    if @sub.update_attributes(sub_params) &&
+        @sub.links.each_with_index do |link, i|
+          link.update_attributes(link_params[i])
+        end
+
       redirect_to sub_url(@sub)
     else
       flash[:errors] = @sub.errors.full_messages
